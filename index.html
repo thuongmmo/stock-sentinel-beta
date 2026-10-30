@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stock Sentinel Beta</title>
-<meta name="description" content="Stock Sentinel: widget xem giá cổ phiếu Việt Nam luôn nổi trên màn hình, lấy giá từ tài khoản DNSE của chính bạn. Bản beta cho Windows.">
+<meta name="description" content="Stock Sentinel: widget xem giá cổ phiếu Việt Nam luôn nổi trên màn hình, lấy giá từ tài khoản DNSE của chính bạn. Bản beta cho Windows, macOS thử nghiệm.">
 <style>
   :root {
     --bg: #f7f8fa; --card: #ffffff; --text: #1d2330; --muted: #5d6677; --line: #e2e6ee;
@@ -51,6 +51,15 @@
     <p class="muted">Cần đăng nhập bằng tài khoản được cấp trên chotaikhoan.vn. Cần hỗ trợ? Liên hệ <strong>Telegram @thuongnv14 (https://t.me/thuongnv14)</strong>.</p>
   </div>
 
+  <div class="card">
+    <p><strong>macOS <span class="badge">Thử nghiệm</span></strong> · macOS 11 trở lên · Mac chip Apple (M1–M4) và Mac Intel · khoảng 6 MB</p>
+    <div class="warn">
+      <p><strong>Bản macOS chưa được kiểm tra kỹ trên máy Mac thật.</strong> Ứng dụng đã build và chạy thử tự động trên macOS, nhưng giao diện, thanh menu, phím tắt, thông báo, đăng nhập tài khoản và kết nối DNSE trên Mac chưa được người dùng thử. Có thể còn lỗi. Nếu gặp lỗi, mong bạn báo qua kênh liên hệ bên dưới.</p>
+    </div>
+    <p><a class="btn" id="download-mac" href="https://github.com/thuongmmo/stock-sentinel-beta/releases/download/v0.1.1/StockSentinel_0.1.1_universal.dmg">Tải cho macOS (thử nghiệm)</a></p>
+    <p class="muted">SHA-256: <code id="sha-mac">cb36f67908c3bd2b39e6409f762001a4091b9b9d5896516f978a2b526146d4cc</code></p>
+  </div>
+
   <h2>Ứng dụng làm được gì</h2>
   <ul>
     <li>Widget giá cổ phiếu (FPT, VCB, HPG… hoặc bất kỳ mã nào bạn gõ) luôn nổi trên các cửa sổ khác, 3 kiểu hiển thị, kéo thả tự do.</li>
@@ -64,7 +73,7 @@
   <ol>
     <li><strong>Tài khoản chứng khoán DNSE</strong> (mở online miễn phí bằng CCCD gắn chip, không cần nạp tiền để xem giá).</li>
     <li><strong>Bật LightSpeed API</strong> trên trang giao dịch Entrade X của DNSE: bấm tên của bạn ở góc trên bên phải → <strong>Thông tin tài khoản → LightSpeed API → Đăng ký</strong>, chọn Smart OTP hoặc Email OTP. Chép ngay <strong>API Key</strong> và <strong>API Secret</strong> (secret chỉ hiện một lần).</li>
-    <li>Không gửi API Key hay API Secret cho bất kỳ ai, kể cả Admin. Key chỉ lưu trong kho khóa của Windows trên máy bạn.</li>
+    <li>Không gửi API Key hay API Secret cho bất kỳ ai, kể cả Admin. Key chỉ lưu trong kho khóa của Windows (hoặc Keychain trên Mac) trên máy bạn.</li>
   </ol>
 
   <h2>Cài đặt</h2>
@@ -73,6 +82,14 @@
     <li>Mở Stock Sentinel. Bảng điều khiển hiện màn hình đăng nhập: nhập tài khoản được cấp, đánh dấu đồng ý và bấm <strong>Đăng nhập</strong>.</li>
     <li>Vào tab <strong>Kết nối</strong>, ở mục <strong>Nhập API key DNSE</strong> dán API Key và API Secret rồi bấm <strong>Kết nối DNSE</strong>. Khi hiện <strong>đã kết nối</strong>, widget tự hiện giá.</li>
     <li>Giá chạy trong giờ giao dịch: thứ Hai đến thứ Sáu, 9:00–11:30 và 13:00–15:00.</li>
+  </ol>
+
+  <h2>Cài đặt trên macOS (thử nghiệm)</h2>
+  <ol>
+    <li>Mở file <code>.dmg</code> vừa tải, kéo <strong>Stock Sentinel</strong> vào thư mục <strong>Applications</strong>.</li>
+    <li>Mở Stock Sentinel. Bản thử nghiệm chưa được Apple công chứng nên lần đầu macOS sẽ chặn: vào <strong>System Settings → Privacy &amp; Security</strong>, kéo xuống và bấm <strong>Open Anyway</strong>, rồi xác nhận. Sau đó đăng nhập và kết nối DNSE như trên Windows.</li>
+    <li>Khi macOS hỏi quyền truy cập Keychain (nơi lưu API Key), chọn <strong>Always Allow</strong>.</li>
+    <li>Phím tắt trên Mac: <strong>Cmd+Opt+S</strong> ẩn/hiện widget, <strong>Cmd+Opt+B</strong> mở bảng điều khiển.</li>
   </ol>
 
   <h2>Tài khoản</h2>
@@ -90,8 +107,9 @@
   </div>
 
   <h2 id="english">English</h2>
-  <p>Stock Sentinel is a small always-on-top widget for Vietnamese stock prices on Windows: last price in price-board colours, change against the reference price, ceiling / floor and volume, your holdings (buy price and quantity) with an estimated P/L in VND, and price alerts. It is for watching and note-taking only and never places orders. Prices come from <strong>your own DNSE securities account</strong> (DNSE LightSpeed API): you enter your API key and secret in Connections, they stay in the Windows keychain and are never sent to the Admin. Outside trading hours the widget shows the last session's closing price, labelled as such. You sign in with an account granted on chotaikhoan.vn (contact: Telegram @thuongnv14 (https://t.me/thuongnv14)); to check the licence the app sends the computer name, a computer identifier and usage times to the Admin's server (see the Privacy Policy).</p>
+  <p>Stock Sentinel is a small always-on-top widget for Vietnamese stock prices on Windows (macOS experimental): last price in price-board colours, change against the reference price, ceiling / floor and volume, your holdings (buy price and quantity) with an estimated P/L in VND, and price alerts. It is for watching and note-taking only and never places orders. Prices come from <strong>your own DNSE securities account</strong> (DNSE LightSpeed API): you enter your API key and secret in Connections, they stay in the Windows keychain (macOS Keychain) and are never sent to the Admin. Outside trading hours the widget shows the last session's closing price, labelled as such. You sign in with an account granted on chotaikhoan.vn (contact: Telegram @thuongnv14 (https://t.me/thuongnv14)); to check the licence the app sends the computer name, a computer identifier and usage times to the Admin's server (see the Privacy Policy).</p>
   <p>The beta installer is not code-signed yet: when Windows shows <em>"Windows protected your PC"</em>, choose <strong>More info → Run anyway</strong>.</p>
+  <p><strong>macOS (experimental, not yet tested by hand on a real Mac):</strong> universal build for Apple Silicon and Intel, macOS 11+. It builds and starts in automated tests, but the UI, menu bar, shortcuts, notifications, sign-in and the DNSE connection have not been tried by users yet. Not notarized: on first launch use <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.</p>
   <p class="muted"><strong>Risk notice.</strong> Not a securities company or exchange; no investment advice. Prices may be delayed, interrupted or wrong. Investing in securities carries the risk of losing capital.</p>
 
   <footer class="muted">

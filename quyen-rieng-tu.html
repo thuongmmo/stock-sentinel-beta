@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quyền riêng tư</title>
+<style>
+  :root {
+    --bg: #f7f8fa; --card: #ffffff; --text: #1d2330; --muted: #5d6677; --line: #e2e6ee;
+    --accent: #0f8b7d; --accent-text: #ffffff; --warn-bg: #fff6e0; --warn-line: #f0c36d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2; --line: #2a303c;
+      --accent: #2fc2ae; --accent-text: #0b0e13; --warn-bg: #2a2412; --warn-line: #6b5a24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2; --line: #2a303c;
+    --accent: #2fc2ae; --accent-text: #0b0e13; --warn-bg: #2a2412; --warn-line: #6b5a24;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p, li { color: var(--text); }
+  .muted { color: var(--muted); }
+  .badge { display: inline-block; font-size: 13px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); vertical-align: middle; margin-left: 8px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin: 16px 0; }
+  .btn { display: inline-block; background: var(--accent); color: var(--accent-text); text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 8px; }
+  .warn { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 12px; padding: 16px 20px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 14px; overflow-wrap: anywhere; }
+  ol, ul { padding-left: 22px; }
+  footer { margin-top: 40px; font-size: 14px; }
+  a { color: var(--accent); }
+  .lang { float: right; font-size: 14px; }
+  table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; } th, td { border: 1px solid var(--line); padding: 6px 8px; text-align: start; vertical-align: top; } blockquote { margin: 0; padding: 8px 16px; border-inline-start: 4px solid var(--warn-line); background: var(--warn-bg); border-radius: 8px; }
+</style>
+</head>
+<body>
+<main>
+<p><a href="index.html">← Stock Sentinel</a></p>
+<p class="muted">Hiệu lực từ / Effective: 30/10/2026 · Stock Sentinel 0.1.0</p>
+<h1>Chính sách quyền riêng tư — Stock Sentinel</h1>
+<h2>1. Tóm tắt</h2>
+<p>Để dùng Stock Sentinel, bạn đăng nhập bằng tài khoản được cấp trên chotaikhoan.vn của <code>anhthuong</code> (gọi tắt là Admin). Ứng dụng gửi về máy chủ bản quyền của Admin một lượng dữ liệu nhỏ, chỉ để <strong>xác nhận bản quyền, quản lý số máy được dùng, chặn máy dùng sai</strong> và <strong>hỗ trợ bạn</strong>. Giá cổ phiếu đi thẳng từ DNSE vào máy bạn; API Key và API Secret DNSE của bạn không bao giờ được gửi cho Admin. Ứng dụng không có quảng cáo, không dùng công cụ phân tích của bên thứ ba và không bán dữ liệu.</p>
+<h2>2. Dữ liệu gửi về máy chủ bản quyền</h2>
+<table><thead><tr><th>Dữ liệu</th><th>Khi nào</th><th>Mục đích</th></tr></thead><tbody><tr><td>Tên đăng nhập và mật khẩu</td><td>Khi đăng nhập (qua HTTPS); máy chủ chỉ lưu mật khẩu dạng băm</td><td>Xác thực tài khoản</td></tr><tr><td><strong>Mã máy</strong>: chuỗi băm SHA-256 tạo từ mã định danh của hệ điều hành (không gửi số serial gốc)</td><td>Khi đăng nhập, khi mở app và mỗi giờ khi app chạy</td><td>Ghi nhận máy được dùng, giới hạn số máy, chặn riêng từng máy</td></tr><tr><td>Tên máy tính, tên và phiên bản hệ điều hành</td><td>Khi kích hoạt máy</td><td>Giúp bạn và Admin nhận ra máy trong danh sách</td></tr><tr><td>Phiên bản ứng dụng</td><td>Khi mở app và mỗi giờ</td><td>Hỗ trợ, thông báo cập nhật</td></tr><tr><td>Thời điểm mở app và thời điểm báo "đang dùng" mỗi giờ</td><td>Khi mở app và mỗi giờ</td><td>Biết máy còn được dùng, phát hiện dùng chung tài khoản</td></tr><tr><td><strong>Loại kết nối giá đang dùng</strong> (DNSE), trạng thái kết nối và giá mới nhất đã cũ bao nhiêu giây</td><td>Khi mở app và mỗi giờ</td><td>Hỗ trợ khi không có giá</td></tr><tr><td>Địa chỉ IP</td><td>Mỗi lần kết nối</td><td>Máy chủ chỉ lưu dạng băm có khóa, để chống dò mật khẩu và giới hạn số lần gọi</td></tr></tbody></table>
+<p>Ứng dụng <strong>không</strong> gửi cho Admin: API Key, API Secret hay thông tin tài khoản DNSE; giá; danh sách mã bạn theo dõi; giá vào lệnh bạn tự ghi; quy tắc cảnh báo; tệp trên máy bạn.</p>
+<h2>3. Dữ liệu trao đổi với DNSE</h2>
+<p>Ứng dụng kết nối thẳng từ máy bạn tới máy chủ của DNSE bằng API Key và chữ ký tạo từ API Secret của bạn (secret không bao giờ rời máy). DNSE nhận các yêu cầu lấy giá, danh sách mã bạn theo dõi và địa chỉ IP của máy bạn, theo chính sách của DNSE. Ứng dụng không đọc số dư, danh mục hay lệnh trong tài khoản DNSE của bạn.</p>
+<h2>4. Nơi lưu và thời gian lưu</h2>
+<ul><li>Máy chủ bản quyền chạy trên hạ tầng của chotaikhoan.vn do Admin quản lý.</li><li>Nhật ký hoạt động (đăng nhập, kích hoạt, báo đang dùng, chặn/gỡ máy): tự xóa sau <strong>180 ngày</strong>.</li><li>Tài khoản và danh sách máy: giữ trong thời gian bạn dùng dịch vụ; xóa khi bạn yêu cầu (mục 7), trừ phần pháp luật buộc phải giữ.</li></ul>
+<h2>5. Dữ liệu chỉ lưu trên máy của bạn</h2>
+<p>Cài đặt, danh sách mã theo dõi, giá vào lệnh bạn tự ghi, quy tắc và lịch sử cảnh báo, nhật ký thao tác nằm trong <code>%APPDATA%\app.stocksentinel.desktop</code> (Windows) hoặc <code>~/Library/Application Support/app.stocksentinel.desktop</code> (macOS). Phiên đăng nhập, API Key và API Secret DNSE nằm trong Windows Credential Manager / macOS Keychain. Vé bản quyền (có chữ ký số, không chứa mật khẩu) lưu trong thư mục dữ liệu để app dùng được khi tạm mất mạng (tối đa 7 ngày).</p>
+<h2>6. Ai được xem dữ liệu</h2>
+<p>Chỉ Admin (để cấp quyền, hỗ trợ và chặn máy dùng sai) và nhà cung cấp hạ tầng máy chủ (lưu trữ, không được dùng cho mục đích khác). Chúng tôi không bán hay cho thuê dữ liệu.</p>
+<h2>7. Quyền của bạn</h2>
+<p>Bạn có quyền được biết, xem, sửa, xóa dữ liệu của mình và rút lại sự đồng ý. Để giải phóng một máy, dùng <strong>Cài đặt → Tài khoản bản quyền → Đăng xuất và giải phóng máy này</strong>. Để xóa API Key DNSE khỏi máy, xóa kết nối DNSE trong tab <strong>Kết nối</strong>; để vô hiệu hóa key, tạo lại hoặc hủy key trên trang LightSpeed API của DNSE. Để xem, xóa dữ liệu hoặc rút lại đồng ý (khi đó bạn sẽ không dùng được ứng dụng nữa), liên hệ <code>Telegram @thuongnv14 (https://t.me/thuongnv14)</code>.</p>
+<h2>8. Bảo mật</h2>
+<p>Kết nối dùng HTTPS/WSS; vé bản quyền có chữ ký Ed25519; mật khẩu và IP được lưu dạng băm; phiên đăng nhập và key DNSE nằm trong kho khóa của hệ điều hành. Nếu xảy ra sự cố lộ dữ liệu, chúng tôi sẽ thông báo theo quy định.</p>
+<h2>9. Trẻ em</h2>
+<p>Ứng dụng dành cho người từ 18 tuổi trở lên.</p>
+<h2>10. Thay đổi</h2>
+<p>Bản mới sẽ được đăng trên trang tải trước khi áp dụng, kèm ngày hiệu lực. Liên hệ: <code>Telegram @thuongnv14 (https://t.me/thuongnv14)</code>.</p>
+<hr>
+<h1>Privacy Policy — Stock Sentinel</h1>
+<ol><li><strong>Summary.</strong> You sign in with an account granted on chotaikhoan.vn by <code>anhthuong</code> (the Admin). The app sends a small amount of data to the Admin's licence server only to <strong>confirm your licence, manage how many computers use it, block a misused computer</strong> and <strong>support you</strong>. Stock prices go from DNSE straight to your computer; your DNSE API key and secret are never sent to the Admin. No ads, no third-party analytics, no data sales.</li><li><strong>Sent to the licence server:</strong> username and password at sign-in (HTTPS; password stored as a hash); a <strong>machine ID</strong> (SHA-256 hash of operating-system identifiers) at sign-in, every start and hourly; computer name and OS when a computer is activated; app version; start and hourly "in use" times; the <strong>kind of price connection</strong> (DNSE), its state and the age of its latest price; IP address (keyed hash only). <strong>Not sent to the Admin:</strong> your DNSE API key, secret or account data, prices, your symbol list, entry notes, alert rules or files.</li><li><strong>Exchanged with DNSE:</strong> the app connects from your computer straight to DNSE with your API key and a signature made from your secret (the secret never leaves your computer). DNSE receives the price requests, the symbols you watch and your IP address, under DNSE's own policy. The app never reads balances, portfolio or orders.</li><li><strong>Where and how long:</strong> the Admin's server at chotaikhoan.vn; activity logs deleted after <strong>180 days</strong>; account and computer list kept while you use the service and deleted on request unless the law requires otherwise.</li><li><strong>On your computer only:</strong> settings, symbol list, entry notes, alerts and the local audit log in <code>%APPDATA%\app.stocksentinel.desktop</code> (Windows) or <code>~/Library/Application Support/app.stocksentinel.desktop</code> (macOS); sign-in session and DNSE API key/secret in Windows Credential Manager / macOS Keychain; a signed licence token so the app works offline for up to 7 days.</li><li><strong>Who sees it:</strong> only the Admin and the server infrastructure provider (storage only). Never sold or rented.</li><li><strong>Your rights:</strong> to know, access, correct and delete your data and to withdraw consent. Release a computer in <strong>Settings → Licence account → Sign out and release this computer</strong>; remove the DNSE key by deleting the DNSE connection; for anything else contact <code>Telegram @thuongnv14 (https://t.me/thuongnv14)</code>.</li><li><strong>Security:</strong> HTTPS/WSS, Ed25519-signed licence tokens, hashed passwords and IPs, session and DNSE key in the OS keychain; breaches are notified as the law requires.</li><li><strong>Age:</strong> 18+.</li><li><strong>Changes</strong> are posted on the download page before they apply. Contact: <code>Telegram @thuongnv14 (https://t.me/thuongnv14)</code>.</li></ol>
+</main>
+</body>
+</html>

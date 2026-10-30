@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock Sentinel Beta</title>
+<meta name="description" content="Stock Sentinel: widget xem giá cổ phiếu Việt Nam luôn nổi trên màn hình, lấy giá từ tài khoản DNSE của chính bạn. Bản beta cho Windows.">
+<style>
+  :root {
+    --bg: #f7f8fa; --card: #ffffff; --text: #1d2330; --muted: #5d6677; --line: #e2e6ee;
+    --accent: #0f8b7d; --accent-text: #ffffff; --warn-bg: #fff6e0; --warn-line: #f0c36d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2; --line: #2a303c;
+      --accent: #2fc2ae; --accent-text: #0b0e13; --warn-bg: #2a2412; --warn-line: #6b5a24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2; --line: #2a303c;
+    --accent: #2fc2ae; --accent-text: #0b0e13; --warn-bg: #2a2412; --warn-line: #6b5a24;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p, li { color: var(--text); }
+  .muted { color: var(--muted); }
+  .badge { display: inline-block; font-size: 13px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); vertical-align: middle; margin-left: 8px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin: 16px 0; }
+  .btn { display: inline-block; background: var(--accent); color: var(--accent-text); text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 8px; }
+  .warn { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 12px; padding: 16px 20px; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 14px; overflow-wrap: anywhere; }
+  ol, ul { padding-left: 22px; }
+  footer { margin-top: 40px; font-size: 14px; }
+  a { color: var(--accent); }
+  .lang { float: right; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="lang" href="#english">English</a>
+  <h1>Stock Sentinel <span class="badge">Beta</span></h1>
+  <p class="muted">Widget xem giá cổ phiếu Việt Nam nhỏ gọn, luôn nổi trên màn hình. Giá lấy từ tài khoản chứng khoán DNSE của chính bạn. Chỉ để xem và ghi chép, không đặt lệnh.</p>
+
+  <div class="card">
+    <p><strong>Phiên bản <span id="ver">0.1.0</span></strong> · Windows 10/11 64-bit · cập nhật 30/10/2026 13:32</p>
+    <p><a class="btn" id="download" href="https://github.com/thuongmmo/stock-sentinel-beta/releases/download/v0.1.0/StockSentinel_0.1.0_x64-setup.exe">Tải bộ cài cho Windows</a></p>
+    <p class="muted">SHA-256: <code id="sha">ba0e26ad340ba123936e0563fe39c3b9aa18f38785710e36ff84aab8c6f53b04</code></p>
+    <p class="muted">Cần đăng nhập bằng tài khoản được cấp trên chotaikhoan.vn. Cần hỗ trợ? Liên hệ <strong>Telegram @thuongnv14 (https://t.me/thuongnv14)</strong>.</p>
+  </div>
+
+  <h2>Ứng dụng làm được gì</h2>
+  <ul>
+    <li>Widget giá cổ phiếu (FPT, VCB, HPG… hoặc bất kỳ mã nào bạn gõ) luôn nổi trên các cửa sổ khác, 3 kiểu hiển thị, kéo thả tự do.</li>
+    <li>Giá khớp tô màu như bảng giá (trần, sàn, tham chiếu, tăng, giảm), mức tăng/giảm, tổng khối lượng.</li>
+    <li>Ngoài giờ giao dịch hiện <strong>giá đóng cửa phiên gần nhất</strong> cùng giá tham chiếu, trần, sàn, có ghi rõ nhãn.</li>
+    <li>Ghi giá mua và số lượng cổ phiếu bạn đang nắm giữ, xem lãi/lỗ tạm tính bằng VNĐ theo giá khớp; cảnh báo giá bằng thông báo và âm thanh.</li>
+    <li>Giá, ghi chép, cảnh báo và cài đặt chỉ lưu trên máy bạn.</li>
+  </ul>
+
+  <h2>Bạn cần chuẩn bị</h2>
+  <ol>
+    <li><strong>Tài khoản chứng khoán DNSE</strong> (mở online miễn phí bằng CCCD gắn chip, không cần nạp tiền để xem giá).</li>
+    <li><strong>Bật LightSpeed API</strong> trên trang giao dịch Entrade X của DNSE: bấm tên của bạn ở góc trên bên phải → <strong>Thông tin tài khoản → LightSpeed API → Đăng ký</strong>, chọn Smart OTP hoặc Email OTP. Chép ngay <strong>API Key</strong> và <strong>API Secret</strong> (secret chỉ hiện một lần).</li>
+    <li>Không gửi API Key hay API Secret cho bất kỳ ai, kể cả Admin. Key chỉ lưu trong kho khóa của Windows trên máy bạn.</li>
+  </ol>
+
+  <h2>Cài đặt</h2>
+  <ol>
+    <li>Tải và chạy bộ cài. Bản beta chưa được ký số nên Windows sẽ hiện <em>"Windows protected your PC"</em>: bấm <strong>More info → Run anyway</strong>.</li>
+    <li>Mở Stock Sentinel. Bảng điều khiển hiện màn hình đăng nhập: nhập tài khoản được cấp, đánh dấu đồng ý và bấm <strong>Đăng nhập</strong>.</li>
+    <li>Vào tab <strong>Kết nối</strong>, ở mục <strong>Nhập API key DNSE</strong> dán API Key và API Secret rồi bấm <strong>Kết nối DNSE</strong>. Khi hiện <strong>đã kết nối</strong>, widget tự hiện giá.</li>
+    <li>Giá chạy trong giờ giao dịch: thứ Hai đến thứ Sáu, 9:00–11:30 và 13:00–15:00.</li>
+  </ol>
+
+  <h2>Tài khoản</h2>
+  <ul>
+    <li>Mỗi máy tính đăng nhập được ghi nhận vào tài khoản. Để kiểm tra bản quyền, ứng dụng gửi về máy chủ của Admin: tên máy, một mã nhận diện máy và thời gian sử dụng. Chi tiết trong <a href="quyen-rieng-tu.html">Chính sách quyền riêng tư</a>.</li>
+    <li>Không có mạng, ứng dụng vẫn dùng được tối đa 7 ngày kể từ lần kiểm tra cuối.</li>
+    <li>Muốn chuyển sang máy khác: Bảng điều khiển → Cài đặt → Tài khoản bản quyền → <strong>Đăng xuất và giải phóng máy này</strong>.</li>
+  </ul>
+
+  <h2>Góp ý và báo lỗi</h2>
+  <p>Trong ứng dụng, bấm <strong>Nhắn hỗ trợ</strong> (thông tin ứng dụng được chép sẵn, không có key) rồi dán vào tin nhắn gửi: <strong>Telegram @thuongnv14 (https://t.me/thuongnv14)</strong></p>
+
+  <div class="warn">
+    <p><strong>Lưu ý rủi ro.</strong> Stock Sentinel là công cụ theo dõi giá và ghi chép cá nhân. Ứng dụng không phải công ty chứng khoán, không giữ tiền hay chứng khoán, không đặt lệnh và không khuyến nghị đầu tư. Giá có thể bị trễ, gián đoạn hoặc sai. Đầu tư chứng khoán có rủi ro mất vốn; mọi quyết định là của bạn.</p>
+  </div>
+
+  <h2 id="english">English</h2>
+  <p>Stock Sentinel is a small always-on-top widget for Vietnamese stock prices on Windows: last price in price-board colours, change against the reference price, ceiling / floor and volume, your holdings (buy price and quantity) with an estimated P/L in VND, and price alerts. It is for watching and note-taking only and never places orders. Prices come from <strong>your own DNSE securities account</strong> (DNSE LightSpeed API): you enter your API key and secret in Connections, they stay in the Windows keychain and are never sent to the Admin. Outside trading hours the widget shows the last session's closing price, labelled as such. You sign in with an account granted on chotaikhoan.vn (contact: Telegram @thuongnv14 (https://t.me/thuongnv14)); to check the licence the app sends the computer name, a computer identifier and usage times to the Admin's server (see the Privacy Policy).</p>
+  <p>The beta installer is not code-signed yet: when Windows shows <em>"Windows protected your PC"</em>, choose <strong>More info → Run anyway</strong>.</p>
+  <p class="muted"><strong>Risk notice.</strong> Not a securities company or exchange; no investment advice. Prices may be delayed, interrupted or wrong. Investing in securities carries the risk of losing capital.</p>
+
+  <footer class="muted">
+    <p><a href="dieu-khoan.html">Điều khoản sử dụng / Terms of Use</a> · <a href="quyen-rieng-tu.html">Chính sách quyền riêng tư / Privacy Policy</a></p>
+    <p>DNSE, Entrade X và LightSpeed API là tên và nhãn hiệu của Công ty Cổ phần Chứng khoán DNSE. Stock Sentinel không liên kết và không được DNSE chứng thực. DNSE, Entrade X and LightSpeed API are names and trademarks of DNSE Securities JSC; Stock Sentinel is not affiliated with or endorsed by DNSE.</p>
+  </footer>
+</main>
+</body>
+</html>

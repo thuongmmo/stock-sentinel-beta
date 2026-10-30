@@ -87,8 +87,9 @@
   <h2>Cài đặt trên macOS (thử nghiệm)</h2>
   <ol>
     <li>Mở file <code>.dmg</code> vừa tải, kéo <strong>Stock Sentinel</strong> vào thư mục <strong>Applications</strong>.</li>
-    <li>Mở Stock Sentinel. Bản thử nghiệm chưa được Apple công chứng nên lần đầu macOS sẽ chặn: vào <strong>System Settings → Privacy &amp; Security</strong>, kéo xuống và bấm <strong>Open Anyway</strong>, rồi xác nhận. Sau đó đăng nhập và kết nối DNSE như trên Windows.</li>
-    <li>Khi macOS hỏi quyền truy cập Keychain (nơi lưu API Key), chọn <strong>Always Allow</strong>.</li>
+    <li>Mở Stock Sentinel. Bản thử nghiệm chưa được Apple công chứng nên lần đầu macOS sẽ chặn: vào <strong>System Settings → Privacy &amp; Security</strong>, kéo xuống và bấm <strong>Open Anyway</strong>, rồi nhập mật khẩu máy (hoặc Touch ID) để xác nhận. Sau đó đăng nhập và kết nối DNSE như trên Windows.</li>
+    <li>Khi macOS hỏi quyền truy cập Keychain (nơi lưu phiên đăng nhập và API Key), nhập mật khẩu máy và chọn <strong>Always Allow</strong>.</li>
+    <li><strong>Lần đầu macOS hỏi mật khẩu máy 2 lần là bình thường:</strong> một lần cho phép mở app, một lần cho phép app dùng Keychain. Sau đó không hỏi lại. Khi cài bản mới, macOS chỉ hỏi lại bước Open Anyway; Keychain vẫn giữ quyền đã cho.</li>
     <li>Phím tắt trên Mac: <strong>Cmd+Opt+S</strong> ẩn/hiện widget, <strong>Cmd+Opt+B</strong> mở bảng điều khiển.</li>
   </ol>
 
@@ -109,7 +110,7 @@
   <h2 id="english">English</h2>
   <p>Stock Sentinel is a small always-on-top widget for Vietnamese stock prices on Windows (macOS experimental): last price in price-board colours, change against the reference price, ceiling / floor and volume, your holdings (buy price and quantity) with an estimated P/L in VND, and price alerts. It is for watching and note-taking only and never places orders. Prices come from <strong>your own DNSE securities account</strong> (DNSE LightSpeed API): you enter your API key and secret in Connections, they stay in the Windows keychain (macOS Keychain) and are never sent to the Admin. Outside trading hours the widget shows the last session's closing price, labelled as such. You sign in with an account granted on chotaikhoan.vn (contact: Telegram @thuongnv14 (https://t.me/thuongnv14)); to check the licence the app sends the computer name, a computer identifier and usage times to the Admin's server (see the Privacy Policy).</p>
   <p>The beta installer is not code-signed yet: when Windows shows <em>"Windows protected your PC"</em>, choose <strong>More info → Run anyway</strong>.</p>
-  <p><strong>macOS (experimental, not yet tested by hand on a real Mac):</strong> universal build for Apple Silicon and Intel, macOS 11+. It builds and starts in automated tests, but the UI, menu bar, shortcuts, notifications, sign-in and the DNSE connection have not been tried by users yet. Not notarized: on first launch use <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.</p>
+  <p><strong>macOS (experimental, not yet tested by hand on a real Mac):</strong> universal build for Apple Silicon and Intel, macOS 11+. It builds and starts in automated tests, but the UI, menu bar, shortcuts, notifications, sign-in and the DNSE connection have not been tried by users yet. Not notarized: on first launch use <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>. macOS asks for your Mac password twice the first time (once to open the app, once for Keychain: choose <strong>Always Allow</strong>); this is expected.</p>
   <p class="muted"><strong>Risk notice.</strong> Not a securities company or exchange; no investment advice. Prices may be delayed, interrupted or wrong. Investing in securities carries the risk of losing capital.</p>
 
   <footer class="muted">

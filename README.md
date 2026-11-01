@@ -1,4 +1,4 @@
-# Stock Sentinel — Beta cho Windows (macOS thử nghiệm)
+# Stock Sentinel — cho Windows (macOS thử nghiệm)
 
 Trang tải: https://thuongmmo.github.io/stock-sentinel-beta/
 
@@ -11,6 +11,6 @@ Xin tài khoản, góp ý và báo lỗi: Telegram @thuongnv14.
 
 ---
 
-Windows beta (macOS experimental) of Stock Sentinel, an always-on-top widget for Vietnamese stock prices from your own DNSE account.
+Stock Sentinel for Windows (macOS experimental) is an always-on-top widget for Vietnamese stock prices from your own DNSE account.
 You sign in with an account granted on chotaikhoan.vn. This repository only hosts the download page and the
 installers (**Releases**); it contains no source code.

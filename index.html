@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stock Sentinel</title>
-<meta name="description" content="Stock Sentinel: widget xem giá cổ phiếu Việt Nam luôn nổi trên màn hình, lấy giá từ tài khoản DNSE của chính bạn. Cho Windows, macOS thử nghiệm.">
+<meta name="description" content="Stock Sentinel: widget xem giá cổ phiếu Việt Nam luôn nổi trên màn hình, lấy giá từ tài khoản DNSE của chính bạn. Cho Windows và macOS.">
 <style>
   :root {
     --bg: #f7f8fa; --card: #ffffff; --text: #1d2330; --muted: #5d6677; --line: #e2e6ee;
@@ -45,19 +45,16 @@
   <p class="muted">Widget xem giá cổ phiếu Việt Nam nhỏ gọn, luôn nổi trên màn hình. Giá lấy từ tài khoản chứng khoán DNSE của chính bạn. Chỉ để xem và ghi chép, không đặt lệnh.</p>
 
   <div class="card">
-    <p><strong>Phiên bản <span id="ver">0.1.5</span></strong> · Windows 10/11 64-bit · cập nhật 03/11/2026 02:36</p>
-    <p><a class="btn" id="download" href="https://github.com/thuongmmo/stock-sentinel-beta/releases/download/v0.1.5/StockSentinel_0.1.5_x64-setup.exe">Tải bộ cài cho Windows</a></p>
-    <p class="muted">SHA-256: <code id="sha">d9322b464f1fe0a465f06f1880499d2dd59b2fde970a62d0b74bd7e73d7578b7</code></p>
-    <p class="muted">Cần đăng nhập bằng tài khoản được cấp trên chotaikhoan.vn. Cần hỗ trợ? Liên hệ <strong>Telegram @thuongnv14 (https://t.me/thuongnv14)</strong>.</p>
+    <p><strong>Phiên bản <span id="ver">0.1.6</span></strong> · Windows 10/11 64-bit · cập nhật 03/11/2026 11:46</p>
+    <p><a class="btn" id="download" href="https://github.com/thuongmmo/stock-sentinel-beta/releases/download/v0.1.6/StockSentinel_0.1.6_x64-setup.exe">Tải bộ cài cho Windows</a></p>
+    <p class="muted">SHA-256: <code id="sha">2b83eafed704fc6212b81a130b41609825ab15ab21b36b23c796e6b5d924443c</code></p>
+    <p class="muted">Giá thật cần tài khoản được cấp trên chotaikhoan.vn; chưa có tài khoản vẫn xem thử được với giá mẫu. Cần hỗ trợ? Liên hệ <strong>Telegram @thuongnv14 (https://t.me/thuongnv14)</strong>.</p>
   </div>
 
   <div class="card">
-    <p><strong>macOS <span class="badge">Thử nghiệm</span></strong> · macOS 11 trở lên · Mac chip Apple (M1–M4) và Mac Intel · khoảng 6 MB</p>
-    <div class="warn">
-      <p><strong>Bản macOS chưa được kiểm tra kỹ trên máy Mac thật.</strong> Ứng dụng đã build và chạy thử tự động trên macOS, nhưng giao diện, thanh menu, phím tắt, thông báo, đăng nhập tài khoản và kết nối DNSE trên Mac chưa được người dùng thử. Có thể còn lỗi. Nếu gặp lỗi, mong bạn báo qua kênh liên hệ bên dưới.</p>
-    </div>
-    <p><a class="btn" id="download-mac" href="https://github.com/thuongmmo/stock-sentinel-beta/releases/download/v0.1.5/StockSentinel_0.1.5_universal.dmg">Tải cho macOS (thử nghiệm)</a></p>
-    <p class="muted">SHA-256: <code id="sha-mac">93bd6c5fedd2f0a29edb16f893073993d0a10e7dd2570bf694bb4164b66347a2</code></p>
+    <p><strong>macOS</strong> · macOS 11 trở lên · Mac chip Apple (M1–M4) và Mac Intel · khoảng 6 MB</p>
+    <p><a class="btn" id="download-mac" href="https://github.com/thuongmmo/stock-sentinel-beta/releases/download/v0.1.6/StockSentinel_0.1.6_universal.dmg">Tải cho macOS</a></p>
+    <p class="muted">SHA-256: <code id="sha-mac">5db2a5364273b2b436000b80e4a7b4161a360270c3103c4a277f5271ba6d23a5</code></p>
   </div>
 
   <h2>Ứng dụng làm được gì</h2>
@@ -65,7 +62,9 @@
     <li>Widget giá cổ phiếu (FPT, VCB, HPG… hoặc bất kỳ mã nào bạn gõ) luôn nổi trên các cửa sổ khác, 3 kiểu hiển thị, kéo thả tự do.</li>
     <li>Giá khớp tô màu như bảng giá (trần, sàn, tham chiếu, tăng, giảm), mức tăng/giảm, tổng khối lượng.</li>
     <li>Ngoài giờ giao dịch hiện <strong>giá đóng cửa phiên gần nhất</strong> cùng giá tham chiếu, trần, sàn, có ghi rõ nhãn.</li>
-    <li>Ghi giá đã mua và số lượng cổ phiếu bạn đang nắm giữ, xem lãi/lỗ tạm tính bằng VNĐ theo giá khớp; cảnh báo giá bằng thông báo và âm thanh.</li>
+    <li>Ghi giá đã mua và số lượng cổ phiếu bạn đang nắm giữ; bảng <strong>Danh mục</strong> gộp các lần mua cùng mã, cho biết giá vốn trung bình, giá trị và lãi/lỗ từng mã cùng tổng lãi/lỗ cả danh mục bằng VNĐ theo giá khớp.</li>
+    <li>Cảnh báo giá bằng thông báo và âm thanh.</li>
+    <li>Chưa có tài khoản: bấm <strong>Xem thử với giá mẫu</strong> ở màn hình đăng nhập để dùng thử mọi tính năng với giá giả lập (luôn có nhãn GIÁ MẪU).</li>
     <li>Giá, ghi chép, cảnh báo và cài đặt chỉ lưu trên máy bạn.</li>
   </ul>
 
@@ -78,16 +77,16 @@
 
   <h2>Cài đặt</h2>
   <ol>
-    <li>Tải và chạy bộ cài. Bộ cài chưa có chứng thư ký số của Microsoft nên Windows có thể hiện <em>"Windows protected your PC"</em>: bấm <strong>More info → Run anyway</strong>.</li>
+    <li>Tải và chạy bộ cài. Nếu Windows hiện <em>"Windows protected your PC"</em> (thường gặp với ứng dụng mới phát hành), bấm <strong>More info → Run anyway</strong>.</li>
     <li>Mở Stock Sentinel. Bảng điều khiển hiện màn hình đăng nhập: nhập tài khoản được cấp, đánh dấu đồng ý và bấm <strong>Đăng nhập</strong>.</li>
     <li>Vào tab <strong>Kết nối</strong>, ở mục <strong>Nhập API key DNSE</strong> dán API Key và API Secret rồi bấm <strong>Kết nối DNSE</strong>. Khi hiện <strong>đã kết nối</strong>, widget tự hiện giá.</li>
     <li>Giá chạy trong giờ giao dịch: thứ Hai đến thứ Sáu, 9:00–11:30 và 13:00–15:00.</li>
   </ol>
 
-  <h2>Cài đặt trên macOS (thử nghiệm)</h2>
+  <h2>Cài đặt trên macOS</h2>
   <ol>
     <li>Mở file <code>.dmg</code> vừa tải, kéo <strong>Stock Sentinel</strong> vào thư mục <strong>Applications</strong>.</li>
-    <li>Mở Stock Sentinel. Bản thử nghiệm chưa được Apple công chứng nên lần đầu macOS sẽ chặn: vào <strong>System Settings → Privacy &amp; Security</strong>, kéo xuống và bấm <strong>Open Anyway</strong>, rồi nhập mật khẩu máy (hoặc Touch ID) để xác nhận. Sau đó đăng nhập và kết nối DNSE như trên Windows.</li>
+    <li>Mở Stock Sentinel. Lần đầu mở một ứng dụng tải ngoài App Store, macOS yêu cầu bạn xác nhận: vào <strong>System Settings → Privacy &amp; Security</strong>, kéo xuống và bấm <strong>Open Anyway</strong>, rồi nhập mật khẩu máy (hoặc Touch ID) để xác nhận. Sau đó đăng nhập và kết nối DNSE như trên Windows.</li>
     <li>Khi macOS hỏi quyền truy cập Keychain (nơi lưu phiên đăng nhập và API Key), nhập mật khẩu máy và chọn <strong>Always Allow</strong>.</li>
     <li><strong>Lần đầu macOS hỏi mật khẩu máy 2 lần là bình thường:</strong> một lần cho phép mở app, một lần cho phép app dùng Keychain. Sau đó không hỏi lại. Khi cài bản mới, macOS chỉ hỏi lại bước Open Anyway; Keychain vẫn giữ quyền đã cho.</li>
     <li>Phím tắt trên Mac: <strong>Cmd+Opt+S</strong> ẩn/hiện widget, <strong>Cmd+Opt+B</strong> mở bảng điều khiển.</li>
@@ -108,9 +107,9 @@
   </div>
 
   <h2 id="english">English</h2>
-  <p>Stock Sentinel is a small always-on-top widget for Vietnamese stock prices on Windows (macOS experimental): last price in price-board colours, change against the reference price, ceiling / floor and volume, your holdings (buy price and quantity) with an estimated P/L in VND, and price alerts. It is for watching and note-taking only and never places orders. Prices come from <strong>your own DNSE securities account</strong> (DNSE LightSpeed API): you enter your API key and secret in Connections, they stay in the Windows keychain (macOS Keychain) and are never sent to the Admin. Outside trading hours the widget shows the last session's closing price, labelled as such. You sign in with an account granted on chotaikhoan.vn (contact: Telegram @thuongnv14 (https://t.me/thuongnv14)); to check the licence the app sends the computer name, a computer identifier and usage times to the Admin's server (see the Privacy Policy).</p>
-  <p>The installer is not code-signed yet: when Windows shows <em>"Windows protected your PC"</em>, choose <strong>More info → Run anyway</strong>.</p>
-  <p><strong>macOS (experimental, not yet tested by hand on a real Mac):</strong> universal build for Apple Silicon and Intel, macOS 11+. It builds and starts in automated tests, but the UI, menu bar, shortcuts, notifications, sign-in and the DNSE connection have not been tried by users yet. Not notarized: on first launch use <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>. macOS asks for your Mac password twice the first time (once to open the app, once for Keychain: choose <strong>Always Allow</strong>); this is expected.</p>
+  <p>Stock Sentinel is a small always-on-top widget for Vietnamese stock prices on Windows and macOS: last price in price-board colours, change against the reference price, ceiling / floor and volume, your holdings (buy price and quantity) with a portfolio view (average buy price, value and P/L per stock and in total, in VND), and price alerts. Without an account you can try every feature with sample prices (always labelled SAMPLE PRICES). It is for watching and note-taking only and never places orders. Prices come from <strong>your own DNSE securities account</strong> (DNSE LightSpeed API): you enter your API key and secret in Connections, they stay in the Windows keychain (macOS Keychain) and are never sent to the Admin. Outside trading hours the widget shows the last session's closing price, labelled as such. You sign in with an account granted on chotaikhoan.vn (contact: Telegram @thuongnv14 (https://t.me/thuongnv14)); to check the licence the app sends the computer name, a computer identifier and usage times to the Admin's server (see the Privacy Policy).</p>
+  <p>If Windows shows <em>"Windows protected your PC"</em> (common for newly released apps), choose <strong>More info → Run anyway</strong>.</p>
+  <p><strong>macOS:</strong> universal build for Apple Silicon and Intel, macOS 11+. The first time you open an app downloaded outside the App Store, macOS asks you to confirm: <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>. macOS asks for your Mac password twice the first time (once to open the app, once for Keychain: choose <strong>Always Allow</strong>); this is expected.</p>
   <p class="muted"><strong>Risk notice.</strong> Not a securities company or exchange; no investment advice. Prices may be delayed, interrupted or wrong. Investing in securities carries the risk of losing capital.</p>
 
   <footer class="muted">
